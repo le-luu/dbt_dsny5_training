@@ -3,7 +3,7 @@
 WITH source as
 (
     SELECT *
-    FROM raw.stripe.payment
+    FROM {{ source('stripe', 'payment') }}
 ),
 --final CTE
 renamed as (
@@ -18,4 +18,4 @@ renamed as (
     from source
 )
 SELECT *
-FROM source
+FROM renamed
